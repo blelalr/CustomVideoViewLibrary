@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Copyright 2012 Google Inc. All Rights Reserved.
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/background"
+    android:orientation="vertical"
+    android:gravity="center">
+    <com.google.android.youtube.player.YouTubePlayerView
+		android:id="@+id/youtube_view"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+        android:background="@color/background" />
+	<LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/youtube_view"
+        android:background="@color/transparent50"
+        android:weightSum="1.0"   
+        android:gravity="center"
+        android:orientation="horizontal">
+            
+            <ImageButton android:id="@+id/pre_button"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_weight="0.2"
+                android:scaleType="fitCenter"
+                android:padding="4dp"
+               
+                android:background="@android:color/transparent" />
+             <!-- android:src="@drawable/imagebutton_back" -->
+    
+            <ImageButton android:id="@+id/rew"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_weight="0.2"
+                android:gravity="right"
+                android:scaleType="fitCenter"
+                android:padding="4dp"
+                android:alpha="0.8"
+                android:background="@android:color/transparent" />
+            <!-- android:src="@drawable/imagebutton_back5" -->
+            
+            <ImageButton android:id="@+id/play_button"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_weight="0.2"
+                android:scaleType="fitCenter"
+                android:padding="4dp"
+               
+                android:alpha="0.8"
+                android:background="@android:color/transparent" />
+            <!--  android:src="@drawable/imagebutton_stop" -->
+            
+            <ImageButton android:id="@+id/ffwd"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_weight="0.2"
+                android:gravity="left"
+                android:scaleType="fitCenter"
+                android:padding="4dp"
+               
+                android:alpha="0.8"
+                android:background="@android:color/transparent" />
+             <!--android:src="@drawable/imagebutton_next5"  -->
+            <ImageButton android:id="@+id/next_button"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_weight="0.2"
+                android:scaleType="fitCenter"
+                android:padding="4dp"
+               
+                android:background="@android:color/transparent" />
+            <!-- android:src="@drawable/imagebutton_next" --> 
+    
+        </LinearLayout>
+	
+    <!-- <RelativeLayout
+        android:id="@+id/ad_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/background"
+        android:gravity="center_horizontal" 
+        android:layout_gravity="center_horizontal"/>
+    <ScrollView android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/background"
+            android:layout_margin="5dp"
+            android:orientation="vertical"
+            android:gravity="center_horizontal">
+            <TextView android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:textColor="@color/textcolor_grey"
+                android:textSize="18dp"
+                android:text="@string/icon_illustration"/>
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:padding="3dp"
+                android:gravity="center_vertical"               
+                android:orientation="horizontal" >
+                <ImageView 
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_margin="3dp"
+                    android:background="@drawable/imagebutton_play"/>
+                <ImageView 
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_margin="3dp"
+                    android:background="@drawable/imagebutton_stop"/>
+                <TextView android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/textcolor_grey"
+                    android:textSize="18dp"
+                    android:text="@string/player_description_play"/>
+                </LinearLayout>
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:padding="3dp"
+                android:gravity="center_vertical"               
+                android:orientation="horizontal" >
+                <ImageView 
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_margin="3dp"
+                    android:background="@drawable/imagebutton_next"/>
+                <TextView android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/textcolor_grey"
+                    android:textSize="18dp"
+                    android:text="@string/player_description_next"/>
+                </LinearLayout>
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:padding="3dp"
+                android:gravity="center_vertical"               
+                android:orientation="horizontal" >
+                <ImageView 
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_margin="3dp"
+                    android:background="@drawable/imagebutton_back"/>
+                <TextView android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/textcolor_grey"
+                    android:textSize="18dp"
+                    android:text="@string/player_description_pre"/>
+               </LinearLayout>
+            <TextView android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/textcolor_grey"
+                android:layout_margin="8dp"
+                android:padding="5dp"
+                android:textColor="@color/about_us_press"
+                android:textSize="15dp"
+                android:text="@string/player_description"/>
+        </LinearLayout>
+    </ScrollView> -->
+</RelativeLayout>

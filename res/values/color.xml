@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#ff000000</color>
+    <color name="selector_seperator">#959595</color>
+    <color name="selector_scroll_bg">#efefef</color>
+    <color name="transparent50">#88000000</color>
+    <color name="main_color_orange">#de7136</color>
+    <color name="white">#ffffffff</color>
+    <color name="transparent100">#00000000</color>
+    <color name="transparent">#00000000</color>
+    <color name="background">#0a0a0a</color>
+    <color name="tab_normal_bg_light">#1a1a1a</color>
+    <color name="tab_normal_bg_dark">#323232</color>
+</resources>
