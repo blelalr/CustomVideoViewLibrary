@@ -19,7 +19,6 @@ package com.jumplife.customplayer;
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.content.res.XmlResourceParser;
-import android.graphics.drawable.StateListDrawable;
 import android.media.AudioManager;
 import android.os.AsyncTask;
 import android.os.Build;
@@ -120,6 +119,7 @@ public class MediaControllerView extends FrameLayout {
     public ImageView 			ivNextPart;
     public ImageView 			ivPrePart;	
     public TextView				tvPart;
+    public TextView				tvTime;
     //public ImageButton			mYoutubeQualitySwitch;
     public LinearLayout			mQualitySwitchButton;
     public TextView				mQualitySwitch;
@@ -237,11 +237,11 @@ public class MediaControllerView extends FrameLayout {
 				return YoutubeLoader.Loader(true, videoId);
 			}
 		} else if (videoUrl.toLowerCase(Locale.getDefault()).contains(".mp4")) {
-			mVideoQuiltyLink.put(qaQuality.QUALITY_NORMAL, videoUrl);
+			mVideoQuiltyLink.put(QuickAction.QUALITY_NORMAL, videoUrl);
 			return mVideoQuiltyLink;
 		} else if (videoUrl.toLowerCase(Locale.getDefault()).contains(".tudou") ||
 				videoUrl.toLowerCase(Locale.getDefault()).contains("youku")) {
-			mVideoQuiltyLink.put(qaQuality.QUALITY_NORMAL, videoUrl);
+			mVideoQuiltyLink.put(QuickAction.QUALITY_NORMAL, videoUrl);
 			return mVideoQuiltyLink;
 		}
 		return mVideoQuiltyLink;
@@ -251,20 +251,20 @@ public class MediaControllerView extends FrameLayout {
     	String timeStr = "";
     	int hou = stopPosition / (1000 * 60 * 60);    	
     	if(hou != 0)
-    		timeStr = timeStr + hou + "®É";
+    		timeStr = timeStr + hou + "ï¿½ï¿½";
     	
     	int min = (stopPosition - hou * (1000 * 60 * 60)) / (1000 * 60);
     	if(min != 0)
-    		timeStr = timeStr + min + "¤À";
+    		timeStr = timeStr + min + "ï¿½ï¿½";
     	
     	int sec = (stopPosition - hou * (1000 * 60 * 60) - min * (1000 * 60)) / 1000;
     	if(sec != 0)
-    		timeStr = timeStr + sec + "¬í";
+    		timeStr = timeStr + sec + "ï¿½ï¿½";
     	
     	if(timeStr == "")
-    		timeStr = "ÀY";
+    		timeStr = "ï¿½Y";
     		
-    	String message = "Part" + currentPart + " ±N±q " + timeStr + " ¶}©l¼·©ñ";
+    	String message = "Part" + currentPart + " ï¿½Nï¿½q " + timeStr + " ï¿½}ï¿½lï¿½ï¿½ï¿½ï¿½";
     	Toast.makeText(mContext, message,  Toast.LENGTH_SHORT).show();
     }
     
@@ -405,6 +405,7 @@ public class MediaControllerView extends FrameLayout {
         mEndTime = (TextView) v.findViewById(R.id.time);
         mCurrentTime = (TextView) v.findViewById(R.id.time_current); 	
         tvPart = (TextView) v.findViewById(R.id.tv_part);
+        tvTime = (TextView) v.findViewById(R.id.tv_time);
         mFormatBuilder = new StringBuilder();
         mFormatter = new Formatter(mFormatBuilder, Locale.getDefault());
 

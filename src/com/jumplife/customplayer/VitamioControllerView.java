@@ -48,7 +48,6 @@ import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Formatter;
 import java.util.Locale;
-
 import com.example.customvideoviewlibrary.R;
 import com.jumplife.videoloader.BiliLoader;
 import com.jumplife.videoloader.DailymotionLoader;
@@ -125,6 +124,7 @@ public class VitamioControllerView extends FrameLayout {
     public ImageView 			ivNextPart;
     public ImageView 			ivPrePart;
     public TextView				tvPart;
+    public TextView				tvTime;
     //public ImageButton			mYoutubeQualitySwitch;
     public LinearLayout			mQualitySwitchButton;
     public TextView				mQualitySwitch;
@@ -199,7 +199,9 @@ public class VitamioControllerView extends FrameLayout {
         
     }
     
-    public SparseArray<String> parseLink(String videoUrl,String videoId,SparseArray<String> mVideoQuiltyLink) {
+    public SparseArray<String> parseLink(String videoUrl, SparseArray<String> mVideoQuiltyLink) {
+    	String videoId = null;
+    	
     	if (videoUrl.contains("dailymotion")) {
         	//lMediaController.imYoutubeQualitySwitch.setVisibility(View.GONE);
 			if(videoUrl.contains("embed/video/")) {
@@ -243,17 +245,17 @@ public class VitamioControllerView extends FrameLayout {
 				return YoutubeLoader.Loader(true, videoId);
 			}
 		} else if (videoUrl.toLowerCase(Locale.getDefault()).contains(".mp4")) {
-			mVideoQuiltyLink.put(qaQuality.QUALITY_NORMAL, videoUrl);
+			mVideoQuiltyLink.put(QuickAction.QUALITY_NORMAL, videoUrl);
 			return mVideoQuiltyLink; 
 		} else if (videoUrl.toLowerCase(Locale.getDefault()).contains("bilibili")) {
 			mVideoQuiltyLink = BiliLoader.Loader(videoUrl);
 			return mVideoQuiltyLink;
 		} else if (videoUrl.toLowerCase(Locale.getDefault()).contains(".tudou") ||
 				videoUrl.toLowerCase(Locale.getDefault()).contains("youku")) {
-			mVideoQuiltyLink.put(qaQuality.QUALITY_NORMAL, videoUrl);
+			mVideoQuiltyLink.put(QuickAction.QUALITY_NORMAL, videoUrl);
 			return mVideoQuiltyLink;
 		} else if (videoUrl.toLowerCase(Locale.getDefault()).contains(".flv")) {
-			mVideoQuiltyLink.put(qaQuality.QUALITY_NORMAL, videoUrl);
+			mVideoQuiltyLink.put(QuickAction.QUALITY_NORMAL, videoUrl);
 			return mVideoQuiltyLink;
 		} else if (videoUrl.toLowerCase(Locale.getDefault()).contains("56.com") ||
 				videoUrl.toLowerCase(Locale.getDefault()).contains("56.pptv.com")) {
@@ -265,26 +267,28 @@ public class VitamioControllerView extends FrameLayout {
 		}
 		return mVideoQuiltyLink;
     }
+
     public void timeToast(int stopPosition, int currentPart) {
     	String timeStr = "";
     	int hou = stopPosition / (1000 * 60 * 60);    	
     	if(hou != 0)
-    		timeStr = timeStr + hou + "®É";
+    		timeStr = timeStr + hou + "æ™‚";
     	
     	int min = (stopPosition - hou * (1000 * 60 * 60)) / (1000 * 60);
     	if(min != 0)
-    		timeStr = timeStr + min + "¤À";
+    		timeStr = timeStr + min + "åˆ†";
     	
     	int sec = (stopPosition - hou * (1000 * 60 * 60) - min * (1000 * 60)) / 1000;
     	if(sec != 0)
-    		timeStr = timeStr + sec + "¬í";
+    		timeStr = timeStr + sec + "ç§’";
     	
     	if(timeStr == "")
-    		timeStr = "ÀY";
+    		timeStr = "é ­";
     		
-    	String message = "Part" + currentPart + " ±N±q " + timeStr + " ¶}©l¼·©ñ";
+    	String message = "Part" + currentPart + " å°‡å¾ž " + timeStr + " é–‹å§‹æ’¥æ”¾";
     	Toast.makeText(mContext, message,  Toast.LENGTH_SHORT).show();
     }
+    
     public void setPartBtns(int currentPart ,ArrayList<String> videoIds){
     	if(currentPart > videoIds.size()-1)
         	ivNextPart.setVisibility(View.INVISIBLE);
@@ -300,7 +304,7 @@ public class VitamioControllerView extends FrameLayout {
 
     /**
      * Set the view that acts as the anchor for the control view.
-     * This can for example be a VideoView, or your Activity's main view.
+     * This can for example be a VideoView, or your Context's main view.
      * @param view The view to which to anchor the controller when it is visible.
      */
     public void setAnchorView(ViewGroup view) {
@@ -422,6 +426,7 @@ public class VitamioControllerView extends FrameLayout {
         mEndTime = (TextView) v.findViewById(R.id.time);
         mCurrentTime = (TextView) v.findViewById(R.id.time_current); 	
         tvPart = (TextView) v.findViewById(R.id.tv_part);
+        tvTime = (TextView) v.findViewById(R.id.tv_time);
         mFormatBuilder = new StringBuilder();
         mFormatter = new Formatter(mFormatBuilder, Locale.getDefault());
 
