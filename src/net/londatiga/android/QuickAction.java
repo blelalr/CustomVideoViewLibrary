@@ -138,19 +138,19 @@ public class QuickAction extends PopupWindows implements OnDismissListener {
 	public void setQualityActionItem(SparseArray<String> VideoQuiltyLink){
 		
 		if(VideoQuiltyLink.get(QUALITY_HIGH_QUALITY) != null) {
-            ActionItem hightqualityItem = new ActionItem(QUALITY_HIGH_QUALITY, "∂W≤M");
+            ActionItem hightqualityItem = new ActionItem(QUALITY_HIGH_QUALITY, "Ë∂ÖÊ∏Ö");
             addActionItem(hightqualityItem);
         }
         if(VideoQuiltyLink.get(QUALITY_LARGE) != null) {
-            ActionItem largeItem = new ActionItem(QUALITY_LARGE, "∞™≤M");
+            ActionItem largeItem = new ActionItem(QUALITY_LARGE, "È´òÊ∏Ö");
             addActionItem(largeItem);
         }
         if(VideoQuiltyLink.get(QUALITY_NORMAL) != null) {
-            ActionItem standardItem = new ActionItem(QUALITY_NORMAL, "º–∑«");
+            ActionItem standardItem = new ActionItem(QUALITY_NORMAL, "Ê®ôÊ∫ñ");
             addActionItem(standardItem);
         }
         if(VideoQuiltyLink.get(QUALITY_SMOOTH) != null) {
-            ActionItem smoothItem = new ActionItem(QUALITY_SMOOTH, "¨y∫Z");
+            ActionItem smoothItem = new ActionItem(QUALITY_SMOOTH, "ÊµÅÊö¢");
             addActionItem(smoothItem);
         }
 	}

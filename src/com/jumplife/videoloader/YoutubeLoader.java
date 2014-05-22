@@ -9,7 +9,6 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLDecoder;
 import java.util.HashMap;
-import org.json.JSONObject;
 import android.util.SparseArray;
 
 /*
@@ -33,7 +32,7 @@ public class YoutubeLoader {
 		 */
 	    
 		//String message = getMessageFromServer("GET", YOUTUBE_VIDEO_INFORMATION_URL + pYouTubeVideoId + "&eurl=http://jumplives.pixnet.net/blog/", null);
-	    String message = getMessageFromServer("GET", YOUTUBE_VIDEO_INFORMATION_URL + pYouTubeVideoId + "&el=detailpage&ps=default&eurl=&gl=US&hl=en", null);
+	    String message = getMessageFromServer("GET", YOUTUBE_VIDEO_INFORMATION_URL + pYouTubeVideoId + "&el=detailpage&ps=default&eurl=&gl=US&hl=en");
 		
 		if(message == null) 
 			return null;
@@ -108,7 +107,7 @@ public class YoutubeLoader {
 	    return parseStrMap;
 	}
 	
-	public static String getMessageFromServer(String requestMethod, String apiPath, JSONObject json) {
+	public static String getMessageFromServer(String requestMethod, String apiPath) {
 		URL url;
 		try {
 			url = new URL(apiPath);
